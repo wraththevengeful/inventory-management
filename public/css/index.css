@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root{
+    --primary-color:#b0bec4;
+    --secondary-color:#cbd2d5;
+    --tertiary-color:#dee5e5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Open Sans", sans-serif;
+    padding: 0;
+}
+
+header {
+    background-color: var(--primary-color);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.5rem;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+
+
+}
+
+header>div {
+    display: flex;
+}
+
+header img {
+    height: auto;
+    width: 40px;
+}
+
+header .addItem {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 50px;
+    height: 55px;
+    width: 200px;
+    margin-right: 25px;
+    transition: background-color 0.3s ease-out, transform 0.2s ease-out;
+    user-select: none;
+}
+
+header .addItem:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+header .addItem:active{
+    transform: translateY(2px);
+}
+
+section{
+    display: flex;
+    justify-content: flex-start;
+    margin: 2rem 4rem 0 4rem;
+}
+
+#searchBar{
+    background-color:var(--primary-color);
+    height: 3rem;
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+#searchBar input[type="text"]#searchTerm {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #777;
+  background-color: inherit;
+}
+
+#searchBar input[type="text"]#searchTerm:focus{
+    border-bottom: 2px solid #666;
+    outline: none;
+}
+
+
+#searchButton{
+    height: 20px;
+    width: auto;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+
+table.inventoryTable {
+    margin: 2rem;
+    overflow: scroll;
+    align-self: flex-start;
+    height: auto;
+    margin: 3rem 4rem;
+}
+
+th {
+    background-color: var(--primary-color);
+    /* border: 1px solid black; */
+}
+
+.inventoryTable td, .inventoryTable th {
+  width: 13rem;     /* sets column width */
+  height: 3rem;     /* sets row height */
+  max-width: 13rem;
+  max-height: 3rem;
+  text-align: center;
+}
+
+
+table tr:nth-child(odd){
+    background-color: var(--secondary-color);
+}
+
+table tr:nth-child(even){
+    background-color: var(--tertiary-color);
+}
+
+.itemDetails{
+    border-radius: 5px;
+    height: 2rem;
+    width: 4rem;
+}

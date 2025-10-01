@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/index.js" defer></script>
+    <!-- <link rel="stylesheet" href="/css/normalise.css"> -->
+</head>
+<body>
+    <header>
+        <h1>InvManage</h1>
+        <div>
+            <div class="addItem">
+                <img title="Add Item" src="/images/add.svg" alt="Add an Item">
+                <p>Add Item</p>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div id="searchBar">
+            <input type="text" name="searchTerm" id="searchTerm">
+            <img title="Search" src="/images/search.svg" alt="Search items" id="searchButton">
+        </div>
+    </section>
+    <main>
+        <table class="inventoryTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>MRP</th>
+                    <th>Category</th>
+                    <th>Vendor ID</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%items.map((item)=>{%>
+                    <tr>
+                        <td><%=item.id%></td>
+                        <td><%=item.name%></td>
+                        <td><%=item.mrp+` ₹`%></td>
+                        <td><%=item.category%></td>
+                        <td><%=(item.vendorid).toUpperCase()%></td>
+                        <td><%=item.quantity%></td>
+                        <td><button class="itemDetails">More</button></td>
+                    </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
