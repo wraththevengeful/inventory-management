@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Item</title>
 </head>
+
 <body>
-    <form action="" method="POST">
-        
+    <h1>Add a New Item</h1>
+    <form action="/add/item" method="POST">
+        <div>
+            <label for="nameInput">Name</label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label for="mrpInput">MRP</label>
+            <input type="number" name="mrp" id="mrpInput" required>
+        </div>
+        <div>
+            <label for="quantityInput">Quantity</label>
+            <input type="number" name="quantity" id="quantityInput" required>
+        </div>
+        <div>
+            <label for="descriptionInput">Description</label>
+            <textarea name="description" id="descriptionInput" rows="4" cols="20"
+                placeholder="Enter Description"></textarea>
+        </div>
+        <div>
+            <label for="vendoridInput">Vendor</label>
+            <select name="vendorid" title="Vendor ID" id="vendoridInput">
+                <%vendors.map((vendor)=>{%>
+                    <option value=<%=vendor.id%>><%=(vendor.id).toUpperCase()%>_<%=vendor.name%>
+                    </option>
+                    <%})%>
+            </select>
+        </div>
+        <div>
+            <label for="categoryInput">Category</label>
+            <select name="category" title="Category" id="categoryInput" required>
+                <%categories.map((category)=>{%>
+                    <option value=<%=category.name%>><%=category.name%>
+                    </option>
+                    <%})%>
+            </select>
+        </div>
+        <div>
+            <label for="imageUrlInput">Image URL</label>
+            <input type="url" name="imageurl" id="imageUrlInput">
+        </div>
+        <input type="submit" value="Add">
+        <input type="reset" value="Reset">
+        <a href="/">Go Home</a>
     </form>
 </body>
+
 </html>

@@ -34,7 +34,6 @@ VALUES ('v001', 'Acme Supplies', 'acme@example.com', '9876543210');`
   quantity INT DEFAULT 0,
   category TEXT,
   vendorid TEXT,
-  miscinfo JSONB,
   imageurl TEXT,
   FOREIGN KEY (vendorid) REFERENCES vendors(id),
   FOREIGN KEY (category) REFERENCES category(name)

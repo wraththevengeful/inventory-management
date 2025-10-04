@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=item.itemname%></title>
+    <link rel="stylesheet" href="/css/details.css">
+</head>
+<body>
+    <h1>Item Details</h1>
+    <main>
+        <div>
+            <img src= <%=item.imageurl%> alt="Item Image" class="itemImage">
+            <h2 class="itemName">
+                Product Name: <span class="normalSpan"><%=item.itemname%></span>
+            </h2>
+            <p class="itemId">
+                <span class="boldSpan">Product ID:</span> <%=item.itemid%>
+            </p>
+            <p class="itemCategory">
+                <span class="boldSpan">Category:</span> <%=item.category%>
+            </p>
+        </div>
+        <div>
+            <p class="itemMrp">
+                <span class="boldSpan">MRP:</span> <%=item.mrp%> ₹
+            </p>
+            <p class="itemQuantity">
+               <span class="boldSpan">Quantity: </span> <%=item.quantity%>
+            </p>
+        </div>
+        <div>
+            <p class="itemVendorName">
+                <span class="boldSpan">Vendor Name: </span><%=item.vendorname%>
+            </p>
+            <p class="itemVendorId">
+                <span class="boldSpan">Vendor ID: </span><%=item.vendorid.toUpperCase()%>
+            </p>
+            <p class="itemVendorEmail">
+                <span class="boldSpan">Vendor Email: </span><%=item.vendoremail%>
+            </p> 
+            <p class="itemVendorPhone">
+                <span class="boldSpan">Vendor Phone: </span><%=item.vendorphone%>
+            </p>                        
+        </div>
+    </main>
+    <section class="itemControls">
+        <a href="#"><button>Delete</button></a>
+    </section>
+</body>
+</html>
