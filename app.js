@@ -23,7 +23,7 @@ app.use('/details',detailsRouter);
 app.use('/update', updateRouter);
 app.use('/delete', deleteRouter);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT,(err)=>{
     if(err) console.error(err);
     console.log(`Listening on PORT:`, PORT);
