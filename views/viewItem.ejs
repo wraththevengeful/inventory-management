@@ -1,51 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=item.itemname%></title>
+    <title>
+        <%=item.itemname%>
+    </title>
     <link rel="stylesheet" href="/css/details.css">
+    <script src="/js/viewitem.js" defer></script>
 </head>
+
 <body>
     <h1>Item Details</h1>
     <main>
-        <div>
-            <img src= <%=item.imageurl%> alt="Item Image" class="itemImage">
-            <h2 class="itemName">
-                Product Name: <span class="normalSpan"><%=item.itemname%></span>
-            </h2>
-            <p class="itemId">
-                <span class="boldSpan">Product ID:</span> <%=item.itemid%>
-            </p>
-            <p class="itemCategory">
-                <span class="boldSpan">Category:</span> <%=item.category%>
-            </p>
-        </div>
-        <div>
-            <p class="itemMrp">
-                <span class="boldSpan">MRP:</span> <%=item.mrp%> ₹
-            </p>
-            <p class="itemQuantity">
-               <span class="boldSpan">Quantity: </span> <%=item.quantity%>
-            </p>
-        </div>
-        <div>
-            <p class="itemVendorName">
-                <span class="boldSpan">Vendor Name: </span><%=item.vendorname%>
-            </p>
-            <p class="itemVendorId">
-                <span class="boldSpan">Vendor ID: </span><%=item.vendorid.toUpperCase()%>
-            </p>
-            <p class="itemVendorEmail">
-                <span class="boldSpan">Vendor Email: </span><%=item.vendoremail%>
-            </p> 
-            <p class="itemVendorPhone">
-                <span class="boldSpan">Vendor Phone: </span><%=item.vendorphone%>
-            </p>                        
-        </div>
+        <form action="/update/item/<%=item.itemid%>" method="POST">
+
+            <fieldset disabled>
+                <!-- Section 1: Image and Basic Info -->
+                <div class="itemBasic">
+                    <img src="<%=item.imageurl%>" alt="Item Image" class="itemImage">
+
+                    <label for="itemnameInput" class="boldSpan">Product Name:</label>
+                    <input type="text" id="itemnameInput" name="itemname" value=<%=item.itemname%> required>
+
+                    <label for="itemidInput" class="boldSpan">Product ID:</label>
+                    <input type="number" id="itemidInput" name="itemid" value=<%=item.itemid%> readonly>
+
+                    <label for="itemDescInput">Description</label>
+                    <textarea name="itemdescription" id="itemDescInput"><%=item.description%></textarea>
+
+                    <label for="categoryInput" class="boldSpan">Category:</label>
+                    <select id="categoryInput" name="category" required>
+                        <% categories.forEach(category=> { %>
+                            <option value="<%=category.name%>" <%=category.name===item.category ? 'selected' : '' %>>
+                                <%=category.name%>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+
+                <!-- Section 2: Pricing and Quantity -->
+                <div class="itemPricing">
+                    <label for="mrpInput" class="boldSpan">MRP (₹):</label>
+                    <input type="number" id="mrpInput" name="mrp" value="<%=item.mrp%>" required>
+
+                    <label for="quantityInput" class="boldSpan">Quantity:</label>
+                    <input type="number" id="quantityInput" name="quantity" value="<%=item.quantity%>" required>
+                </div>
+
+                <!-- Section 3: Vendor Info -->
+                <div class="itemVendor">
+                    <label for="vendoridInput" class="boldSpan">Vendor ID:</label>
+                    <select id="vendoridInput" name="vendorid" required>
+                        <% vendors.forEach(vendor=> { %>
+                            <option value=<%=vendor.id%>
+                                <%=vendor.id===item.vendorid ? 'selected' : '' %>>
+                                    <%=vendor.id.toUpperCase()%> - <%=vendor.name%>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- Section 4: Actions -->
+            <div class="itemActions">
+                <button id="enableEdit">Edit</button>
+                <button id="cancelEdit" style="display: none;">Cancel</button>
+                <button type="reset" style="display: none;" id="resetEdit">Reset</button>
+                <button type="submit" formaction="/update/item/<%=item.itemid%>" id="updateItem"
+                    style="display: none;">Update</button>
+                <button id="deleteItem">Delete</button>
+            </div>
+        </form>
+        <form action="/delete/item/<%=item.itemid%>" method="POST" id="confirmDeleteForm" style="display: none;">
+            <h2>Confirm Admin login for delete</h2>
+            <div>
+                <label for="adminUsername">Username</label>
+                <input type="text" name="adminusername" id="adminUsername">
+            </div>
+            <div>
+                <label for="adminPassword">Password</label>
+                <input type="password" name="adminpassword" id="adminPassword">
+            </div>
+            <input type="submit" value="Confirm Delete">
+            <button id="cancelDelete">Cancel</button>
+        </form>
+        <a href="/">Go Home</a>
     </main>
-    <section class="itemControls">
-        <a href="#"><button>Delete</button></a>
-    </section>
+
 </body>
+
 </html>

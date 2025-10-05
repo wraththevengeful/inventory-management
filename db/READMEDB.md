@@ -41,7 +41,7 @@ VALUES ('v001', 'Acme Supplies', 'acme@example.com', '9876543210');`
 
 #### Example insert:
 `INSERT INTO items (
-  name, mrp, description, quantity, category, vendorid, miscinfo, imageurl
+  name, mrp, description, quantity, category, vendorid, imageurl
 )
 VALUES (
   'Milk',
@@ -50,7 +50,6 @@ VALUES (
   10,
   'Dairy',
   'v001',
-  '{"shelf_life": "7 days", "storage": "refrigerated"}',
   'https://static.vecteezy.com/system/resources/thumbnails/027/226/459/small_2x/an-8-bit-retro-styled-pixel-art-illustration-of-dark-blue-milk-carton-free-png.png'
 );`
 

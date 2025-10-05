@@ -43,6 +43,17 @@ async function getItemDetails(itemid) {
     return rows;
 };
 
+async function updateAnItem(newItem) {
+    await pool.query(`UPDATE items SET 
+        name = $1, mrp = $2, description = $3, quantity = $4, category = $5, vendorid = $6
+        WHERE id = $7`,[newItem.name, newItem.mrp, newItem.description, newItem.quantity, newItem.category, newItem.vendorid, newItem.id]
+    );
+}
+
+async function deleteAnItem(itemID) {
+   await pool.query(`DELETE FROM items WHERE id = $1`,[itemID]); 
+}
+
 module.exports = {
     getAllItemsDB,
     getAllCategories,
@@ -51,5 +62,7 @@ module.exports = {
     addNewCategory,
     addNewCategory,
     addNewVendor,
-    getItemDetails
+    getItemDetails,
+    updateAnItem, 
+    deleteAnItem
 }
