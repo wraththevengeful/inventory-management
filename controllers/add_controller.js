@@ -3,7 +3,7 @@ const db = require("../db/queries")
 async function getOpenAddItemForm(req, res) {
     const categoryrows = await db.getAllCategories();
     const vendorsrows = await db.getAllVendors();
-    console.log(categoryrows, vendorsrows);
+    // console.log(categoryrows, vendorsrows);
     res.render("addItemForm", { categories: categoryrows, vendors: vendorsrows });
 }
 

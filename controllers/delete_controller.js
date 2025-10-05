@@ -6,12 +6,12 @@ async function deleteAnItem(req,res) {
     // console.log(itemID); 
     const admindets = await db.verifyAdmin(adminDetails);
     if(admindets && admindets.username == adminDetails.adminusername && admindets.password == adminDetails.adminpassword){
-        console.log(`has`);
+        // console.log(`has`);
         await db.deleteAnItem(itemID);
         res.redirect('/');
     }
     else{
-        console.log(`hasnt`);
+        // console.log(`hasnt`);
         res.render("wrongadmin")
     }
     // console.log(adminDetails, admindets)
