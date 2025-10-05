@@ -54,6 +54,17 @@ async function deleteAnItem(itemID) {
    await pool.query(`DELETE FROM items WHERE id = $1`,[itemID]); 
 }
 
+async function verifyAdmin(loginDetails){
+    const {rows} = await pool.query(`SELECT * FROM admins WHERE username = $1`,[loginDetails.adminusername]);
+    if(rows.length <= 0){
+        // console.log(`no users found`);
+        return null;
+    } else{
+        // console.log(rows);
+        return rows[0];
+    }
+}
+
 module.exports = {
     getAllItemsDB,
     getAllCategories,
@@ -64,5 +75,6 @@ module.exports = {
     addNewVendor,
     getItemDetails,
     updateAnItem, 
-    deleteAnItem
+    deleteAnItem,
+    verifyAdmin
 }
